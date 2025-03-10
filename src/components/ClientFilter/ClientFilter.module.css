@@ -1,0 +1,31 @@
+.clientFilter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color var(--transition-speed);
+  }
+  
+  .searchInput:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  
+  .clientCard {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: box-shadow var(--transition-speed);
+  }
+  
+  .clientCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }

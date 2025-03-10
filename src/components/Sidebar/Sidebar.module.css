@@ -1,0 +1,155 @@
+/* =========================
+   Если используете глобальные переменные,
+   убедитесь, что они объявлены в global.css
+   либо в :root здесь.
+   Ниже пример значений для "светлой" темы.
+========================= */
+:root {
+    --primary-color: #3f51b5;      /* Акцентный цвет (для активных пунктов) */
+    --sidebar-bg-color: #ffffff;   /* Фон боковой панели */
+    --hover-color: #f0f0f0;        /* Цвет фона при наведении */
+    --text-color: #333;            /* Основной цвет текста */
+    --transition-speed: 0.3s;
+    --border-radius: 6px;
+  }
+  
+  /* =========================
+     Основной контейнер боковой панели
+  ========================= */
+  .sidebar {
+    width: 250px;                        /* Можно изменить на 280px или другое значение */
+    height: 100vh;
+    background-color: var(--sidebar-bg-color);
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); /* Лёгкая тень, не слишком тёмная */
+    transition: width var(--transition-speed) ease;
+    position: relative;
+    color: var(--text-color);
+  }
+  
+  /* Состояние свёрнутого меню (если используете collapse) */
+  .collapsed {
+    width: 80px;
+  }
+  
+  /* Логотип */
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    transition: opacity var(--transition-speed) ease;
+  }
+  
+  .collapsed .logo {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Список инструментов */
+  .toolList {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .toolItem {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Кнопки навигации */
+  .toolButton {
+    width: 100%;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed), transform 0.2s, box-shadow var(--transition-speed);
+    cursor: pointer;
+    color: var(--text-color);
+    text-align: left; /* чтобы текст был слева */
+  }
+  
+  .toolButton:hover {
+    background-color: var(--hover-color);
+    transform: translateX(3px);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Активная кнопка */
+  .toolButton.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Иконка */
+  .icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+  }
+  
+  /* Подпись рядом с иконкой */
+  .label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity var(--transition-speed), margin-left var(--transition-speed);
+  }
+  
+  .collapsed .label {
+    opacity: 0;
+    margin-left: -20px;
+  }
+  
+  /* Кнопка сворачивания / разворачивания меню */
+  .toggleButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform var(--transition-speed), color var(--transition-speed);
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .toggleButton:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+  }
+  
+  /* =========================
+     Адаптивные стили
+  ========================= */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 80px;
+      padding: 15px;
+    }
+  
+    .logo {
+      font-size: 18px;
+    }
+  
+    .toolButton {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }

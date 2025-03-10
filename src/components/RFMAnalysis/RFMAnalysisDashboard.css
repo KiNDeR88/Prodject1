@@ -1,0 +1,96 @@
+/* ========== Основная обертка дашборда ========== */
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  /* ========== Заголовки и блоки ========== */
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .file-upload {
+    margin-bottom: 20px;
+  }
+  
+  .period-select {
+    margin-bottom: 20px;
+  }
+  
+  .explanation-box {
+    background-color: #eef;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .explanation-box-alt {
+    background-color: #efe;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  /* ========== Контейнеры для графиков ========== */
+  .chart-container {
+    width: 100%;
+    height: 300px;   /* Фиксированная высота — важна для Recharts */
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  /* ========== Стили таблиц ========== */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Тепловая карта */
+  .heatmap-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .heatmap-table th,
+  .heatmap-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .heatmap-legend {
+    margin-top: 10px;
+  }
+  
+  /* ========== Модальное окно ========== */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-height: 80%;
+    overflow-y: auto;
+    width: 80%;
+  }

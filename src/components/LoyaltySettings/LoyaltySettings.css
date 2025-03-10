@@ -1,0 +1,446 @@
+/* Глобальный сброс и базовые стили */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Основной контейнер приложения */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Панель инструментов */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #283e51, #4b79a1);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar h3 {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+/* Кнопки панели инструментов */
+.toolbar-item,
+.simulate-button,
+.add-next-button,
+.save-button,
+.connect-button,
+.group-button {
+  margin: 6px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-item {
+  background: linear-gradient(135deg, #465a69, #384c5a);
+  color: #fff;
+}
+
+.toolbar-item:hover {
+  background: linear-gradient(135deg, #597a8a, #465a69);
+  transform: translateY(-2px);
+}
+
+.simulate-button {
+  background: linear-gradient(135deg, #00b894, #019875);
+  color: #fff;
+}
+
+.simulate-button:hover {
+  background: linear-gradient(135deg, #00cc99, #01a783);
+  transform: scale(1.05);
+}
+
+.add-next-button {
+  background: linear-gradient(135deg, #6c5ce7, #4834d4);
+  color: #fff;
+}
+
+.add-next-button:hover {
+  background: linear-gradient(135deg, #8e7ff3, #5b63ea);
+  transform: scale(1.05);
+}
+
+.save-button {
+  background: linear-gradient(135deg, #0984e3, #0652dd);
+  color: #fff;
+}
+
+.save-button:hover {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  transform: scale(1.05);
+}
+
+.connect-button {
+  background: linear-gradient(135deg, #fdcb6e, #e17055);
+  color: #fff;
+}
+
+.connect-button:hover {
+  background: linear-gradient(135deg, #fffa65, #fdcb6e);
+  transform: scale(1.05);
+}
+
+.group-button {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: #fff;
+}
+
+.group-button:hover {
+  background: linear-gradient(135deg, #ff7675, #fd79a8);
+  transform: scale(1.05);
+}
+
+/* Контейнер для рабочей области и панели свойств */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Рабочая область (Canvas) */
+.canvas {
+  flex: 1;
+  position: relative;
+  background: #ecf0f1;
+  overflow: auto;
+  padding: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Блоки на холсте */
+.canvas-block {
+  position: absolute;
+  width: 160px;
+  min-height: 100px;
+  background: #fff;
+  border: 2px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  word-wrap: break-word;
+}
+
+.canvas-block:hover {
+  transform: scale(1.05);
+  border-color: #3498db;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.canvas-block.selected {
+  border-color: #e74c3c;
+  box-shadow: 0 0 12px rgba(231,76,60,0.6);
+}
+
+/* Заголовок блока */
+.block-header {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* Тип блока */
+.block-type {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* Сводка блока – улучшенное отображение текста */
+.block-summary {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  text-align: left;
+  padding: 6px 8px;
+  word-break: break-word;
+  background: #fafafa;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Кнопка удаления блока */
+.delete-button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.delete-button:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+/* Теги для выбранных дней недели */
+.tags-container {
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: #3498db;
+  color: #fff;
+  padding: 4px 8px;
+  margin: 2px;
+  border-radius: 12px;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.tag .tag-remove {
+  margin-left: 4px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.tag .tag-remove:hover {
+  transform: scale(1.2);
+}
+
+/* Панель настроек (SidePanel) */
+.side-panel {
+  width: 280px;
+  background: #f7f9fa;
+  padding: 16px;
+  border-left: 2px solid #ecf0f1;
+  overflow-y: auto;
+  transition: background 0.3s;
+}
+
+.side-panel.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: #7f8c8d;
+}
+
+.side-panel h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+/* Элементы форм в SidePanel */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Лог симуляции */
+.simulation-log {
+  background: #ecf0f1;
+  padding: 10px;
+  border-top: 2px solid #bdc3c7;
+  font-family: monospace;
+  font-size: 12px;
+  overflow-y: auto;
+  max-height: 150px;
+}
+
+/* Toast уведомления */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2ecc71;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Контекстное меню */
+.context-menu {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 5px 0;
+  border-radius: 4px;
+}
+
+.context-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.context-menu li {
+  padding: 6px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.context-menu li:hover {
+  background: #f0f0f0;
+}
+
+/* Tooltip стили */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  width: 180px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .main-content {
+    flex-direction: column;
+  }
+  .side-panel {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid #ecf0f1;
+  }
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .simulation-log {
+    max-height: 100px;
+  }
+}
+
+/* Общие стили для контейнера приложения */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Рабочая область (Canvas) */
+.canvas {
+  position: relative;
+  flex: 1;
+  background: #ecf0f1;
+  overflow: hidden;
+  transition: border 0.3s ease;
+  z-index: 0; /* Рабочая область находится на заднем плане */
+}
+
+/* Слой для отображения соединителей между блоками */
+.connections-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* Соединители рисуются поверх рабочей области, но под блоками если они имеют больший z-index */
+}
+
+/* Стили для контекстного меню */
+.context-menu {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.context-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.context-menu ul li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.context-menu ul li:hover {
+  background: #3498db;
+  color: #fff;
+}

@@ -1,0 +1,7 @@
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--background-color);
+    min-height: 100vh;
+    transition: padding var(--transition-speed) ease;
+  }
